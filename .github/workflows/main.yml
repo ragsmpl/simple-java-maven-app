@@ -29,12 +29,6 @@ jobs:
       run: mvn jacoco:report
 
     - name: Publish JaCoCo report
-      uses: actions/upload-artifact@v2
-      with:
-        name: jacoco-report
-        path: target/site/jacoco/index.html
-
-    - name: Publish JaCoCo report
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
