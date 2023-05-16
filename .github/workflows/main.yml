@@ -41,6 +41,8 @@ jobs:
     - name: check
       run: |
         ls -ltr
+        pwd 
+        ls -ltr /home/runner/work/simple-java-maven-app/simple-java-maven-app
 
     - name: Publish JaCoCo report
       uses: peaceiris/actions-gh-pages@v3
