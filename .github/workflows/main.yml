@@ -54,14 +54,14 @@ jobs:
       id: jacoco_reporter
       uses: PavanMudigonda/jacoco-reporter@v4.8
       with:
-          coverage_results_path: ${{ github.workspace }}/target/site/jacoco//jacoco.xml
-          coverage_report_name: Coverage
-          coverage_report_title: JaCoCo
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          skip_check_run: false
-          minimum_coverage: 80
-          fail_below_threshold: false
-          publish_only_summary: false
+        coverage_results_path: ${{ github.workspace }}/target/site/jacoco//jacoco.xml
+        coverage_report_name: Coverage
+        coverage_report_title: JaCoCo
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        skip_check_run: false
+        minimum_coverage: 80
+        fail_below_threshold: false
+        publish_only_summary: false
       
       # Publish Coverage Job Summary  # Optional
     - name: Add Coverage Job Summary
@@ -72,6 +72,6 @@ jobs:
     - name: Upload Code Coverage Artifacts
       uses: actions/upload-artifact@v2
       with:
-          name: code-coverage-report-markdown
-          path: */coverage-results.md 
-          retention-days: 1  
+        name: code-coverage-report-markdown
+        path: "*/coverage-results.md"
+        retention-days: 1  
