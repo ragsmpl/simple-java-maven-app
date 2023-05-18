@@ -52,7 +52,7 @@ jobs:
     - name: Pull request artifacts
       uses: gavv/pull-request-artifacts@v1.0.0
       with:
-        commit: ${{ github.event.pull_request.head.sha }}
+        commit: ${{ github.sha }}
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         artifacts: |
           paths: ${{ github.workspace }}/target/site/jacoco//jacoco.csv
