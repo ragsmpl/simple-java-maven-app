@@ -1,5 +1,4 @@
 name: Maven build with JaCoCo
-
 on:
   push:
   pull_request:
