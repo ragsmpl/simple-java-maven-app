@@ -33,27 +33,6 @@ jobs:
          ls -ltr target/site/jacoco
          mv target target2
 
-    - name: Publish JaCoCo report
-      uses: actions/upload-artifact@v2
-      with:
-        name: jacoco-report
-        path: target/site/jacoco
-        
-    - name: Publish JaCoCo report
-      uses: actions/download-artifact@v3
-      with:
-        name: jacoco-report
-    - name: check
-      run: |
-        ls -ltr
-
-    - name: Add coverage to PR
-      uses: madrapps/jacoco-report@v1.3
-      with:
-          paths: ${{ github.workspace }}/target/site/jacoco//jacoco.xml
-          token: ${{ secrets.GITHUB_TOKEN }}
-          min-coverage-overall: 40
-          min-coverage-changed-files: 60
           
     - name: JaCoCo Code Coverage Report
       id: jacoco_reporter
