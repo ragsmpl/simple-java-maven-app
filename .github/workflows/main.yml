@@ -31,6 +31,7 @@ jobs:
     - name: rename
       run:
          ls -ltr target/site/jacoco
+         mv target target2
 
     - name: Publish JaCoCo report
       uses: actions/upload-artifact@v2
