@@ -49,3 +49,11 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           min-coverage-overall: 40
           min-coverage-changed-files: 60
+    - name: Pull request artifacts
+      uses: gavv/pull-request-artifacts@v1.0.0
+      with:
+        commit: ${{ github.event.pull_request.head.sha }}
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        artifacts: |
+          paths: ${{ github.workspace }}/target/site/jacoco//jacoco.csv
+
