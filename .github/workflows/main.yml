@@ -27,12 +27,16 @@ jobs:
 
     - name: Generate JaCoCo report
       run: mvn jacoco:report
+  
+    - name: rename
+      run:
+         ls -ltr target/site/jacoco
 
     - name: Publish JaCoCo report
       uses: actions/upload-artifact@v2
       with:
         name: jacoco-report
-        path: target/site/jacoco/index.html
+        path: target/site/jacoco
         
     - name: Publish JaCoCo report
       uses: actions/download-artifact@v3
