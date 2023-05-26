@@ -41,6 +41,7 @@ jobs:
       
       # Publish Coverage Job Summary  # Optional
     - name: Add Coverage Job Summary
+      id: test
       run: |
          echo "${{ steps.jacoco.outputs.coverage-overall }}" >> $GITHUB_STEP_SUMMARY
          echo "test-overall=90" >>$GITHUB_OUTPUT
@@ -55,14 +56,14 @@ jobs:
         label: 'Coverage'
         status: ${{ steps.jacoco.outputs.coverage-overall }}
         color: ${{
-          steps.jacoco.outputs.test-overall > 90 && 'green'              ||
-          steps.jacoco.outputs.test-overall > 80 && 'yellow,green'       ||
-          steps.jacoco.outputs.test-overall > 70 && 'yellow'             ||
-          steps.jacoco.outputs.test-overall > 60 && 'orange,yellow'      ||
-          steps.jacoco.outputs.test-overall > 50 && 'orange'             ||
-          steps.jacoco.outputs.test-overall > 40 && 'red,orange'         ||
-          steps.jacoco.outputs.test-overall > 30 && 'red,red,orange'     ||
-          steps.jacoco.outputs.test-overall > 20 && 'red,red,red,orange' ||
+          steps.test.outputs.test-overall > 90 && 'green'              ||
+          steps.test.outputs.test-overall > 80 && 'yellow,green'       ||
+          steps.test.outputs.test-overall > 70 && 'yellow'             ||
+          steps.test.outputs.test-overall > 60 && 'orange,yellow'      ||
+          steps.test.outputs.test-overall > 50 && 'orange'             ||
+          steps.test.outputs.test-overall > 40 && 'red,orange'         ||
+          steps.test.outputs.test-overall > 30 && 'red,red,orange'     ||
+          steps.test.outputs.test-overall > 20 && 'red,red,red,orange' ||
           'red' }}
         path: .github/badges/coverage.svg
         
