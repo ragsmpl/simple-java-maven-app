@@ -43,7 +43,7 @@ jobs:
     - name: Add Coverage Job Summary
       run: |
          echo "${{ steps.jacoco.outputs.coverage-overall }}" >> $GITHUB_STEP_SUMMARY
-         mkdir .github/badges
+         mkdir -p .github/badges
           
       # uploads the coverage-report.md artifact  # Optional
     
