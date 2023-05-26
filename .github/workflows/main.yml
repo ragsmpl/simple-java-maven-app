@@ -41,7 +41,9 @@ jobs:
       
       # Publish Coverage Job Summary  # Optional
     - name: Add Coverage Job Summary
-      run: echo "${{ steps.jacoco.outputs.coverage-overall }}" >> $GITHUB_STEP_SUMMARY
+      run: |
+         echo "${{ steps.jacoco.outputs.coverage-overall }}" >> $GITHUB_STEP_SUMMARY
+         mkdir .github/badges
           
       # uploads the coverage-report.md artifact  # Optional
     
@@ -61,7 +63,7 @@ jobs:
           needs.test.outputs.coverage > 30 && 'red,red,orange'     ||
           needs.test.outputs.coverage > 20 && 'red,red,red,orange' ||
           'red' }}
-        path: coverage.svg
+        path: .github/badges/coverage.svg
         
     - name: Commit badge
       continue-on-error: true
