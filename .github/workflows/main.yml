@@ -61,7 +61,7 @@ jobs:
           needs.test.outputs.coverage > 30 && 'red,red,orange'     ||
           needs.test.outputs.coverage > 20 && 'red,red,red,orange' ||
           'red' }}
-        path: .github/badges/coverage.svg
+        path: badges/coverage.svg
         
     - name: Commit badge
       continue-on-error: true
