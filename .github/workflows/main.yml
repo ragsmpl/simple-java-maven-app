@@ -58,7 +58,7 @@ jobs:
           steps.jacoco.outputs.coverage-overall > 80 && 'yellow,green'       ||
           steps.jacoco.outputs.coverage-overall > 70 && 'yellow'             ||
           steps.jacoco.outputs.coverage-overall > 60 && 'orange,yellow'      ||
-          steps.jacoco.outputs.coverage-overall > 50 && 'oragne'             ||
+          steps.jacoco.outputs.coverage-overall > 50 && 'orange'             ||
           steps.jacoco.outputs.coverage-overall > 40 && 'red,orange'         ||
           steps.jacoco.outputs.coverage-overall > 30 && 'red,red,orange'     ||
           steps.jacoco.outputs.coverage-overall > 20 && 'red,red,red,orange' ||
