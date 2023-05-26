@@ -54,14 +54,14 @@ jobs:
         label: 'Coverage'
         status: ${{ steps.jacoco.outputs.coverage-overall }}
         color: ${{
-          needs.test.outputs.coverage > 90 && 'green'              ||
-          needs.test.outputs.coverage > 80 && 'yellow,green'       ||
-          needs.test.outputs.coverage > 70 && 'yellow'             ||
-          needs.test.outputs.coverage > 60 && 'orange,yellow'      ||
-          needs.test.outputs.coverage > 50 && 'green'             ||
-          needs.test.outputs.coverage > 40 && 'red,orange'         ||
-          needs.test.outputs.coverage > 30 && 'red,red,orange'     ||
-          needs.test.outputs.coverage > 20 && 'red,red,red,orange' ||
+          steps.jacoco.outputs.coverage-overall > 90 && 'green'              ||
+          steps.jacoco.outputs.coverage-overall > 80 && 'yellow,green'       ||
+          steps.jacoco.outputs.coverage-overall > 70 && 'yellow'             ||
+          steps.jacoco.outputs.coverage-overall > 60 && 'orange,yellow'      ||
+          steps.jacoco.outputs.coverage-overall > 50 && 'oragne'             ||
+          steps.jacoco.outputs.coverage-overall > 40 && 'red,orange'         ||
+          steps.jacoco.outputs.coverage-overall > 30 && 'red,red,orange'     ||
+          steps.jacoco.outputs.coverage-overall > 20 && 'red,red,red,orange' ||
           'red' }}
         path: .github/badges/coverage.svg
         
