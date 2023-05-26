@@ -58,7 +58,7 @@ jobs:
           needs.test.outputs.coverage > 80 && 'yellow,green'       ||
           needs.test.outputs.coverage > 70 && 'yellow'             ||
           needs.test.outputs.coverage > 60 && 'orange,yellow'      ||
-          needs.test.outputs.coverage > 50 && 'orange'             ||
+          needs.test.outputs.coverage > 50 && 'green'             ||
           needs.test.outputs.coverage > 40 && 'red,orange'         ||
           needs.test.outputs.coverage > 30 && 'red,red,orange'     ||
           needs.test.outputs.coverage > 20 && 'red,red,red,orange' ||
