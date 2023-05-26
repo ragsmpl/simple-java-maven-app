@@ -44,10 +44,38 @@ jobs:
       run: echo "${{ steps.jacoco.outputs.coverage-overall }}" >> $GITHUB_STEP_SUMMARY
           
       # uploads the coverage-report.md artifact  # Optional
-
-    - name: Upload Code Coverage Artifacts
-      uses: actions/upload-artifact@v2
+    
+    - name: Generate the badge SVG image
+      uses: emibcn/badge-action@v2.0.2
+      id: badge
       with:
-        name: code-coverage-report-markdown
-        path: "*/coverage-results.md"
-        retention-days: 1  
+        label: 'Coverage'
+        status: ${{ steps.jacoco.outputs.coverage-overall }}
+        color: ${{
+          needs.test.outputs.coverage > 90 && 'green'              ||
+          needs.test.outputs.coverage > 80 && 'yellow,green'       ||
+          needs.test.outputs.coverage > 70 && 'yellow'             ||
+          needs.test.outputs.coverage > 60 && 'orange,yellow'      ||
+          needs.test.outputs.coverage > 50 && 'orange'             ||
+          needs.test.outputs.coverage > 40 && 'red,orange'         ||
+          needs.test.outputs.coverage > 30 && 'red,red,orange'     ||
+          needs.test.outputs.coverage > 20 && 'red,red,red,orange' ||
+          'red' }}
+        path: .github/badges/coverage.svg
+        
+    - name: Commit badge
+      continue-on-error: true
+      env:
+        BADGE: ${{ steps.coverage.outputs.path }}
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add "${BADGE}"
+        git commit -m "Add/Update badge"
+        
+    - name: Push badge commit
+      uses: ad-m/github-push-action@master
+      if: ${{ success() }}
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ steps.coverage.outputs.branch }}
