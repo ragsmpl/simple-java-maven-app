@@ -1,4 +1,4 @@
-![coverage](.github/badge/coverage.svg)
+![coverage](.github/badges/coverage.svg)
 
 # simple-java-maven-app
 
