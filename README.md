@@ -1,3 +1,5 @@
+![coverage](.github/badge/coverage.svg)
+
 # simple-java-maven-app
 
 This repository is for the
