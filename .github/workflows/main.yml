@@ -27,11 +27,7 @@ jobs:
 
     - name: Generate JaCoCo report
       run: mvn jacoco:report
-  
-    - name: rename
-      run: |
-         ls -ltr target/site/jacoco
-         mv target target2
+
 
           
     - name: Add coverage to PR
